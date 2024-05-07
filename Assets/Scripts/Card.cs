@@ -5,6 +5,8 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
 	[SerializeField]
+	private int index;
+	[SerializeField]
 	private GameObject head;
 	[SerializeField]
 	private GameObject body;
