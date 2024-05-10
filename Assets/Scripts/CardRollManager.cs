@@ -16,6 +16,7 @@ public class CardRollManager : MonoBehaviour
 		return ;
 	}
 
+
 	public void drawCards()
 	{
 		int idx;
@@ -24,8 +25,8 @@ public class CardRollManager : MonoBehaviour
 		for (int i = 0; i < cards.Length; i++)
 		{
 			idx = Random.Range(0, list.Count);
-            cards[i].GetComponent<Card>().HeadType = list[idx][0];
-            cards[i].GetComponent<Card>().HeadColor = list[idx][1];
+			cards[i].GetComponent<Card>().HeadType = list[idx][0];
+			cards[i].GetComponent<Card>().HeadColor = list[idx][1];
 			cards[i].GetComponent<Card>().BodyColor = list[idx][2];
 			cards[i].GetComponent<Card>().cardSetting();
 			list.RemoveAt(idx);
