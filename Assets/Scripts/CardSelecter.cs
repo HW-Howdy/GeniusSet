@@ -39,4 +39,10 @@ public class CardSeleter : MonoBehaviour
 		Debug.Log("Now seleted : " + string.Join(", ", seletedCards));
 		return ;
 	}
+
+	public void	ResetSelete()
+	{
+		seletedCards.Clear();
+		return ;
+	}
 }
