@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-	[SerializeField]
-	private int index;
+	public int index;
 	[SerializeField]
 	private GameObject head;
 	[SerializeField]
