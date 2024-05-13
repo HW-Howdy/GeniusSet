@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Card : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Card : MonoBehaviour
 	private GameObject head;
 	[SerializeField]
 	private GameObject body;
+	[SerializeField]
+	private GameObject selete;
 
 	[SerializeField]
 	private Sprite[] headTypes;
@@ -18,9 +21,10 @@ public class Card : MonoBehaviour
 	[SerializeField]
 	private Color[] bodyColors;
 
-    private int headType;
-    private int headColor;
-	private int bodyColor;
+    private int		headType;
+    private int		headColor;
+	private int		bodyColor;
+	private bool	state;
 
 	public int HeadType { get => headType; set => headType = value; }
     public int HeadColor { get => headColor; set => headColor = value; }
@@ -38,6 +42,8 @@ public class Card : MonoBehaviour
 		head.GetComponent<SpriteRenderer>().sprite = headTypes[headType];
 		head.GetComponent<SpriteRenderer>().color = headColors[headColor];
 		body.GetComponent<SpriteRenderer>().color = bodyColors[bodyColor];
+		state = false;
+		selete.SetActive(state);
 		if (headType == 1)
 		{
 			head.transform.localScale = new Vector3(0.8f, 0.8f, 1);
@@ -53,6 +59,16 @@ public class Card : MonoBehaviour
 			head.transform.localScale = new Vector3(1, 1, 1);
 			head.transform.position = body.transform.position;
 		}
+		return ;
+	}
+
+	public void	OnClick(bool flag = true)
+	{
+		if (flag)
+			state = !state;
+		else
+			state = false;
+		selete.SetActive(state);
 		return ;
 	}
 	

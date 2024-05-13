@@ -41,6 +41,7 @@ public class CardSeleter : MonoBehaviour
 	{
 		if (card == null)
 			return ;
+		card.OnClick();
 		int idx = seletedCards.FindIndex(x => x.index == card.index);
 		if (idx == -1)
 			seletedCards.Add(card);
@@ -51,6 +52,8 @@ public class CardSeleter : MonoBehaviour
 		if (seletedCards.Count == 3)
 		{
 			setChecker.SetCheck(seletedCards);
+			for (int i = 0; i < seletedCards.Count; i++)
+				seletedCards[i].OnClick(false);
 			ResetSelete();
 		}
 		return ;
