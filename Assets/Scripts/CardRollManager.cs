@@ -31,10 +31,11 @@ public class CardRollManager : MonoBehaviour
 			cards[i].GetComponent<Card>().cardSetting();
 			list.RemoveAt(idx);
 		}
+		Debug.Log("draw new cards");
 		return ;
 	}
 
-	void resetList()
+	private void resetList()
 	{
 		list.Clear();
 		for (int i = 0; i < 3; i++)

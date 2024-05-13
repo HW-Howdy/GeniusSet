@@ -5,17 +5,18 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
 	public int index;
+
 	[SerializeField]
 	private GameObject head;
 	[SerializeField]
 	private GameObject body;
 
 	[SerializeField]
+	private Sprite[] headTypes;
+	[SerializeField]
 	private Color[] headColors;
 	[SerializeField]
 	private Color[] bodyColors;
-	[SerializeField]
-	private Sprite[] headTypes;
 
     private int headType;
     private int headColor;
@@ -54,10 +55,10 @@ public class Card : MonoBehaviour
 		}
 		return ;
 	}
-
-	public List<int> getCardType()
+	
+	public int[] getCardType()
 	{
-		List<int> result = new List<int>() { headType, headColor, bodyColor };
+		int[] result = new int[] { headType, headColor, bodyColor };
 		return (result);
 	}
 	

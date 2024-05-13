@@ -10,6 +10,17 @@ public class CardSeleter : MonoBehaviour
 {
 	[SerializeField]
 	private List<Card> seletedCards = new List<Card>();
+
+	private SetChecker setChecker;
+
+	private void Start()
+	{
+		setChecker = transform.GetComponent<SetChecker>();
+		if (setChecker == null)
+			Debug.Log("Can't found SetChecker in CardSeleter.cs!");
+		return ;
+	}
+
 	// Update is called once per frame
 	void Update()
 	{
@@ -37,12 +48,18 @@ public class CardSeleter : MonoBehaviour
 			seletedCards.RemoveAt(idx);
 		seletedCards.Sort(new Comparison<Card>((x1, x2) => x1.index - x2.index));
 		Debug.Log("Now seleted : " + string.Join(", ", seletedCards));
+		if (seletedCards.Count == 3)
+		{
+			setChecker.SetCheck(seletedCards);
+			ResetSelete();
+		}
 		return ;
 	}
 
 	public void	ResetSelete()
 	{
 		seletedCards.Clear();
+		Debug.Log("Clear \"seletedCards\" in CardSelecter.cs");
 		return ;
 	}
 }
