@@ -273,31 +273,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1666389518}
         m_TargetAssemblyTypeName: CardRollManager, Assembly-CSharp
-        m_MethodName: drawCards
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 519420033}
-        m_TargetAssemblyTypeName: CardSeleter, Assembly-CSharp
-        m_MethodName: ResetSelete
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 519420034}
-        m_TargetAssemblyTypeName: SetChecker, Assembly-CSharp
-        m_MethodName: ResetSetList
+        m_MethodName: rerollStage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -431,8 +407,6 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
-  - component: {fileID: 519420033}
-  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -514,31 +488,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fdadc32c23194c4484f94e94cb15860, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  seletedCards: []
---- !u!114 &519420034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8cbaaa7f87fbbd47a57198046353d1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &541401289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1228,8 +1177,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1666389519}
   - component: {fileID: 1666389518}
+  - component: {fileID: 1666389521}
+  - component: {fileID: 1666389520}
   m_Layer: 0
-  m_Name: CardRollManager
+  m_Name: CardMaster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1247,7 +1198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff462b8729b76c47b941bf74b9b47f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cards:
+  cardObjects:
   - {fileID: 1684450036}
   - {fileID: 249637479}
   - {fileID: 1488158120}
@@ -1272,6 +1223,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1666389520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666389517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8cbaaa7f87fbbd47a57198046353d1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1666389521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666389517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fdadc32c23194c4484f94e94cb15860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seletedCards: []
 --- !u!1 &1684450036 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6242388608744762908, guid: 3f4c9af8c5e19f549abccb2016267990, type: 3}

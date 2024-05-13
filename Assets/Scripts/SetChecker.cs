@@ -8,6 +8,7 @@ public class SetChecker : MonoBehaviour
 {
 	[SerializeField]
 	private List<int[]>	setList =  new List<int[]>();
+	private List<int[]> foundSetList = new List<int[]>();
 
 	public List<int[]> SetList { get => setList; }
 
@@ -21,23 +22,9 @@ public class SetChecker : MonoBehaviour
 		return ;
 	}
 
-	public bool	SetCheck(List<Card> cards)
+	public void	SetCheck(List<Card> cards)
 	{
-		bool	result = true;
-		int		idx = -1;
-
-		if (cards == null || cards.Count != 3)
-			return (false);
-		while (result && ++idx < cards.Count)
-		{
-			if (!CheckThreeEqualOrDifferent(cards[0].getCardType()[idx],
-										  cards[1].getCardType()[idx], 
-										  cards[2].getCardType()[idx]) )
-			{
-				result = false;
-			}
-		}
-		if (result)
+		if (IsSet(cards))
 		{
 			int[] found = new int[] { cards[0].index, cards[1].index, cards[2].index };
 			if (setList.FindIndex(x => x.SequenceEqual(found)) == -1)
@@ -47,9 +34,52 @@ public class SetChecker : MonoBehaviour
 				Debug.Log("now setList Count : " + setList.Count);
 			}
 		}
+		return ;
+	}
+
+	public bool	ShortageCheck(List<Card> cards)
+	{
+		return (false);
+	}
+
+	public void	FindAllSet(List<Card> cards)
+	{
+		foundSetList.Clear();
+		for (int i = 0; i < cards.Count - 2; i++)
+		{
+			for (int j = i + 1;  j < cards.Count - 1; j++)
+			{
+				for (int k = j + 1; k < cards.Count; k++)
+				{
+					if (IsSet(new List<Card>() { cards[i], cards[j], cards[k] } ) )
+						foundSetList.Add(new int[] { cards[i].index, cards[j].index, cards[k].index });
+				}
+			}
+		}
+		Debug.Log("Found Set is " + foundSetList.Count);
+		return ;
+	}
+
+	private bool	IsSet(List<Card> cards)
+	{
+		bool	result = true;
+		int		idx = -1;
+
+		if (cards == null || cards.Count != 3)
+			return (false);
+		while (result && ++idx < cards.Count)
+		{
+			if (!CheckThreeEqualOrDifferent(	cards[0].getCardType()[idx],
+												cards[1].getCardType()[idx],
+												cards[2].getCardType()[idx]))
+			{
+				result = false;
+			}
+		}
 		return (result);
 	}
 
+	//check 3 parameter, if there all are Equal or Diffenrent, return true. else, return false
 	bool CheckThreeEqualOrDifferent(int a, int b, int c)
 	{
 		if ( (a == b && b == c) || (a != b && b != c && a != c) )
