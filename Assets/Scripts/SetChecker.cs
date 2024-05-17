@@ -6,19 +6,19 @@ using UnityEngine;
 
 public class SetChecker : MonoBehaviour
 {
-	[SerializeField]
 	private List<int[]>	setList =  new List<int[]>();
 	private List<int[]> foundSetList = new List<int[]>();
 
 	public List<int[]> SetList { get => setList; }
+	public List<int[]> FoundSetList { get => foundSetList; }
 
-	private CardSeleter cardSeleter;
+	private CardSeleter			cardSeleter;
+	private ShowSetListManager	showSetListManager;
 
 	private void Start()
 	{
 		cardSeleter = transform.GetComponent<CardSeleter>();
-		if (cardSeleter == null)
-			Debug.Log("Can't found cardSeleter in SetCheck.cs!");
+		showSetListManager = GameObject.Find("ShowSetListMaster").GetComponent<ShowSetListManager>();
 		return ;
 	}
 
@@ -31,6 +31,7 @@ public class SetChecker : MonoBehaviour
 			if (setList.FindIndex(x => x.SequenceEqual(found)) == -1)
 			{
 				setList.Add(found);
+				showSetListManager.addShowSetList(found);
 				Debug.Log("new set found! : " + string.Join(", ", setList[setList.Count - 1]));
 				Debug.Log("now setList Count : " + setList.Count);
 			}

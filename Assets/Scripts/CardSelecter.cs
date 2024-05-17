@@ -8,7 +8,6 @@ using UnityEngine.UIElements;
 
 public class CardSeleter : MonoBehaviour
 {
-	[SerializeField]
 	private List<Card> seletedCards = new List<Card>();
 
 	private SetChecker setChecker;
@@ -16,8 +15,6 @@ public class CardSeleter : MonoBehaviour
 	private void Start()
 	{
 		setChecker = transform.GetComponent<SetChecker>();
-		if (setChecker == null)
-			Debug.Log("Can't found SetChecker in CardSeleter.cs!");
 		return ;
 	}
 

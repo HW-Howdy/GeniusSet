@@ -8,33 +8,17 @@ public class CardRollManager : MonoBehaviour
 	[SerializeField]
 	GameObject[] cardObjects;
 
-	private List<Card>	cards = new List<Card>();
+	[SerializeField]
+	private List<Card> cards = new List<Card>();
 	private List<int[]> cardDeck = new List<int[]>();
 
-	private SetChecker setChecker;
-	private CardSeleter cardSeleter;
+	public List<Card> nineCards { get => cards; }
 
 	// Start is called before the first frame update
-	void Start()
+	void Awake()
 	{
-		setChecker = transform.GetComponent<SetChecker>();
-		if (setChecker == null)
-			Debug.Log("Can't found setChecker in CardRollManager.cs!");
-		cardSeleter = transform.GetComponent<CardSeleter>();
-		if (cardSeleter == null)
-			Debug.Log("Can't found cardSeleter in CardRollManager.cs!");
 		for (int i = 0; i < cardObjects.Length; i++)
 			cards.Add(cardObjects[i].GetComponent<Card>());
-		rerollStage();
-		return ;
-	}
-
-	public void	rerollStage()
-	{
-		drawCards();
-		cardSeleter.ResetSelete();
-		setChecker.ResetSetList();
-		setChecker.FindAllSet(cards);
 		return ;
 	}
 

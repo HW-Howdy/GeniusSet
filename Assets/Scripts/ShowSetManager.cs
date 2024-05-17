@@ -11,7 +11,7 @@ public class ShowSetManager : MonoBehaviour
 	{
 		if (idxs.Length != 3)
 			return ;
-		for (int i = 0; i < idxs.Length; i++)
+		for (int i = 0; i < indexObjs.Length; i++)
 		{
 			indexObjs[i].GetComponent<ShowSetIndex>().SetIndex(idxs[i]);
 		}

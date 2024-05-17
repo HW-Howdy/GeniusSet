@@ -350,8 +350,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1666389518}
-        m_TargetAssemblyTypeName: CardRollManager, Assembly-CSharp
+      - m_Target: {fileID: 371711151}
+        m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
         m_MethodName: rerollStage
         m_Mode: 1
         m_Arguments:
@@ -552,8 +552,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 371711150}
+  - component: {fileID: 371711151}
   m_Layer: 0
-  m_Name: StageManager
+  m_Name: StageMaster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -574,6 +575,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &371711151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371711149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e160a896c36db0246bb7d99901e5aa56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardMaster: {fileID: 1666389517}
+  showSetListMaster: {fileID: 1161724725}
 --- !u!1001 &508755418
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1229,6 +1244,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8513298760588871550, guid: 3f4c9af8c5e19f549abccb2016267990, type: 3}
   m_PrefabInstance: {fileID: 1828578835}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1161724725
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1161724726}
+  - component: {fileID: 1161724727}
+  m_Layer: 0
+  m_Name: ShowSetListMaster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1161724726
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161724725}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1161724727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161724725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d38f79de444b3044b114da34caf27d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showSet: {fileID: 4109864748440347227, guid: 0c8459d3dfd70d841bc4b7ed65e1889c, type: 3}
 --- !u!1001 &1390546600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1491,7 +1551,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fdadc32c23194c4484f94e94cb15860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seletedCards: []
 --- !u!1 &1684450036 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6242388608744762908, guid: 3f4c9af8c5e19f549abccb2016267990, type: 3}
@@ -1652,6 +1711,7 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 1666389519}
   - {fileID: 371711150}
+  - {fileID: 1161724726}
   - {fileID: 835885290}
   - {fileID: 968647883}
   - {fileID: 1819659842}

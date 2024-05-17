@@ -201,7 +201,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8410538899709984979}
-  - component: {fileID: 4061382106086970350}
   - component: {fileID: 870082560726263674}
   m_Layer: 0
   m_Name: ShowSet
@@ -229,19 +228,6 @@ Transform:
   - {fileID: 4071716923164458738}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4061382106086970350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4109864748440347227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ac3f39fc6b469946b41d009de3d3e1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  indexObjs: []
 --- !u!114 &870082560726263674
 MonoBehaviour:
   m_ObjectHideFlags: 0
