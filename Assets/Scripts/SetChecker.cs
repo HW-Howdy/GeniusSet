@@ -22,9 +22,10 @@ public class SetChecker : MonoBehaviour
 		return ;
 	}
 
+	//파라미터로 들어온 cards가 세트인지 확인하고 세트라면 setList에 추가함
 	public void	SetCheck(List<Card> cards)
 	{
-		if (IsSet(cards))
+		if ( IsSet(cards) )
 		{
 			int[] found = new int[] { cards[0].index, cards[1].index, cards[2].index };
 			if (setList.FindIndex(x => x.SequenceEqual(found)) == -1)
@@ -37,11 +38,17 @@ public class SetChecker : MonoBehaviour
 		return ;
 	}
 
-	public bool	ShortageCheck(List<Card> cards)
+	//현재 필드가 결을 선언할 수 있는지 체크함
+	public void	ShortageCheck()
 	{
-		return (false);
+		if (setList.Count == foundSetList.Count)
+			Debug.Log("Win!");
+		else
+			Debug.Log("Lose");
+		return ;
 	}
 
+	//파라미터로 들어온 cards에 있는 모든 세트를 찾아 foundSetList에 저장함
 	public void	FindAllSet(List<Card> cards)
 	{
 		foundSetList.Clear();
@@ -51,7 +58,7 @@ public class SetChecker : MonoBehaviour
 			{
 				for (int k = j + 1; k < cards.Count; k++)
 				{
-					if (IsSet(new List<Card>() { cards[i], cards[j], cards[k] } ) )
+					if ( IsSet(new List<Card>() { cards[i], cards[j], cards[k] } ) )
 						foundSetList.Add(new int[] { cards[i].index, cards[j].index, cards[k].index });
 				}
 			}
@@ -60,6 +67,7 @@ public class SetChecker : MonoBehaviour
 		return ;
 	}
 
+	//파라미터로 들어온 cards가 세트라면 true, 아니라면 false를 반환
 	private bool	IsSet(List<Card> cards)
 	{
 		bool	result = true;
@@ -79,7 +87,7 @@ public class SetChecker : MonoBehaviour
 		return (result);
 	}
 
-	//check 3 parameter, if there all are Equal or Diffenrent, return true. else, return false
+	//check 3 parameter, if there all are Equal or Diffenrent return true. else, return false
 	bool CheckThreeEqualOrDifferent(int a, int b, int c)
 	{
 		if ( (a == b && b == c) || (a != b && b != c && a != c) )
@@ -88,6 +96,7 @@ public class SetChecker : MonoBehaviour
 			return (false);
 	}
 
+	//setList를 초기화
 	public void ResetSetList()
 	{
 		Debug.Log("Clear \"setList\" in SetChecker.cs");
