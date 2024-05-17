@@ -553,6 +553,7 @@ GameObject:
   m_Component:
   - component: {fileID: 371711150}
   - component: {fileID: 371711151}
+  - component: {fileID: 371711152}
   m_Layer: 0
   m_Name: StageMaster
   m_TagString: Untagged
@@ -589,6 +590,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardMaster: {fileID: 1666389517}
   showSetListMaster: {fileID: 1161724725}
+--- !u!114 &371711152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371711149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9234d4cf60c85564fbb5b18e21f0b68a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &508755418
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1512,6 +1525,7 @@ MonoBehaviour:
   - {fileID: 1637998754}
   - {fileID: 1095056142}
   - {fileID: 1096843251}
+  cards: []
 --- !u!4 &1666389519
 Transform:
   m_ObjectHideFlags: 0
