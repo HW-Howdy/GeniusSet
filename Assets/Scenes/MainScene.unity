@@ -590,6 +590,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardMaster: {fileID: 1666389517}
   showSetListMaster: {fileID: 1161724725}
+  lastStage: 10
 --- !u!114 &371711152
 MonoBehaviour:
   m_ObjectHideFlags: 0

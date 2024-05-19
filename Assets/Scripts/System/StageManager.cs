@@ -16,6 +16,12 @@ public class StageManager : MonoBehaviour
 	private SetChecker			setChecker;
 	private ShowSetListManager	showSetListManager;
 
+	private int					stage;
+	[SerializeField]
+	private int					lastStage = 10;
+
+	public int					Stage { get => stage; }
+
 
 	// Start is called before the first frame update
 	void Start()
@@ -24,12 +30,14 @@ public class StageManager : MonoBehaviour
 		setChecker = cardMaster.GetComponent<SetChecker>();
 		cardSeleter = cardMaster.GetComponent<CardSeleter>();
 		showSetListManager = showSetListMaster.GetComponent<ShowSetListManager>();
+		stage = 0;
 		rerollStage();
 		return ;
 	}
 
 	public void rerollStage()
 	{
+		stage++;
 		cardRollManager.drawCards();
 		cardSeleter.ResetSelete();
 		setChecker.ResetSetList();
