@@ -8,9 +8,9 @@ using UnityEngine.UIElements;
 
 public class CardSeleter : MonoBehaviour
 {
-	private List<Card> seletedCards = new List<Card>();
+	private List<Card>	seletedCards = new List<Card>();
 
-	private SetChecker setChecker;
+	private SetChecker	setChecker;
 
 	private void Start()
 	{

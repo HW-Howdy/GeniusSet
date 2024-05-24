@@ -10,8 +10,8 @@ public class ShowSetListManager : MonoBehaviour
 
 	private List<GameObject>	showSetList = new List<GameObject>();
 
-	private Vector3 startPoint = new Vector3(-7, -4, 0);
-	private Vector3 endPoint = new Vector3(7, -4, 0);
+	private Vector3				startPoint = new Vector3(-7, -4, 0);
+	private Vector3				endPoint = new Vector3(7, -4, 0);
 
 	// Start is called before the first frame update
 	void Start()

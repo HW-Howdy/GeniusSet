@@ -6,15 +6,20 @@ using UnityEngine;
 public class StageManager : MonoBehaviour
 {
 	[SerializeField]
-	private GameObject	cardMaster;
+	private GameObject			cardMaster;
 
 	[SerializeField]
-	private GameObject	showSetListMaster;
+	private GameObject			showSetListMaster;
+
+	[SerializeField]
+	private GameObject			canvas;
 
 	private CardRollManager		cardRollManager;
 	private CardSeleter			cardSeleter;
 	private SetChecker			setChecker;
 	private ShowSetListManager	showSetListManager;
+
+	private PrintStageManager	printStageManager;
 
 	private int					stage;
 	[SerializeField]
@@ -30,14 +35,29 @@ public class StageManager : MonoBehaviour
 		setChecker = cardMaster.GetComponent<SetChecker>();
 		cardSeleter = cardMaster.GetComponent<CardSeleter>();
 		showSetListManager = showSetListMaster.GetComponent<ShowSetListManager>();
+		printStageManager = canvas.GetComponent<PrintStageManager>();
 		stage = 0;
-		rerollStage();
+		NextStage();
 		return ;
 	}
 
-	public void rerollStage()
+	public void	NextStage()
 	{
-		stage++;
+		if (stage++ >= lastStage)
+		{
+			//someting end
+		}
+		else
+		{
+			ResetStage();
+		}
+		printStageManager.updateText(stage);
+		Debug.Log("Now Stage : " + stage);
+		return ;
+	}
+
+	private void	ResetStage()
+	{
 		cardRollManager.drawCards();
 		cardSeleter.ResetSelete();
 		setChecker.ResetSetList();

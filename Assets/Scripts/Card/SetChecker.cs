@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class SetChecker : MonoBehaviour
 {
-	private List<int[]>	setList =  new List<int[]>();
-	private List<int[]> foundSetList = new List<int[]>();
+	private List<int[]>			setList =  new List<int[]>();
+	private List<int[]>			foundSetList = new List<int[]>();
 
-	public List<int[]> SetList { get => setList; }
-	public List<int[]> FoundSetList { get => foundSetList; }
+	public List<int[]>			SetList { get => setList; }
+	public List<int[]>			FoundSetList { get => foundSetList; }
 
 	private CardSeleter			cardSeleter;
 	private ShowSetListManager	showSetListManager;
@@ -23,30 +23,32 @@ public class SetChecker : MonoBehaviour
 	}
 
 	//파라미터로 들어온 cards가 세트인지 확인하고 세트라면 setList에 추가함
-	public void	SetCheck(List<Card> cards)
+	public bool	SetCheck(List<Card> cards)
 	{
+		bool	result = false;
+
 		if ( IsSet(cards) )
 		{
 			int[] found = new int[] { cards[0].index, cards[1].index, cards[2].index };
 			if (setList.FindIndex(x => x.SequenceEqual(found)) == -1)
 			{
+				result = true;
 				setList.Add(found);
 				showSetListManager.addShowSetList(found);
 				Debug.Log("new set found! : " + string.Join(", ", setList[setList.Count - 1]));
 				Debug.Log("now setList Count : " + setList.Count);
 			}
 		}
-		return ;
+		return (result);
 	}
 
 	//현재 필드가 결을 선언할 수 있는지 체크함
-	public void	ShortageCheck()
+	public bool	ShortageCheck()
 	{
 		if (setList.Count == foundSetList.Count)
-			Debug.Log("Win!");
+			return (true);
 		else
-			Debug.Log("Lose");
-		return ;
+			return (false);
 	}
 
 	//파라미터로 들어온 cards에 있는 모든 세트를 찾아 foundSetList에 저장함
