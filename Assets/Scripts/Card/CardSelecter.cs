@@ -6,10 +6,14 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+
+//화면에 보이는 Card를 클릭할 떄의 이벤트를 관조함
 public class CardSeleter : MonoBehaviour
 {
+	//선택된 Card 오브젝트의 Card 컴포넌트 리스트
 	private List<Card>	seletedCards = new List<Card>();
 
+	//선택된 Card의 연산을 해줄 클래스
 	private SetChecker	setChecker;
 
 	private void Start()
@@ -34,6 +38,13 @@ public class CardSeleter : MonoBehaviour
 		return ;
 	}
 
+	/*  
+	 * 카드를 선택하면 호출되는 메소드
+	 * 카드를 선택하던가, 이미 선택된 카드라면 선택이 해제됨 
+	 * 선택된 카드가 세 장이 되면 선택된 카드들이 합인지 확인함
+	 * 
+	 * @pragma card : 화면에서 클릭된 Card 오브젝트의 Card 컴포넌트
+	 */
 	void	ClickCard(Card card)
 	{
 		if (card == null)
@@ -56,6 +67,7 @@ public class CardSeleter : MonoBehaviour
 		return ;
 	}
 
+	//선택된 Card 리스트를 초기화함
 	public void	ResetSelete()
 	{
 		seletedCards.Clear();

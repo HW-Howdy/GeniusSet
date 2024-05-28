@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
+
+//게임의 스테이지 진행을 관리하는 클래스
 public class StageManager : MonoBehaviour
 {
+	//카드를 관리하는 클래스가 모여있는 게임오브젝트
 	[SerializeField]
 	private GameObject			cardMaster;
 
+	//합을 유저에게 보여주는 클래스가 모여있는 게임 오브젝트
 	[SerializeField]
 	private GameObject			showSetListMaster;
 
+	//화면에 정보를 출력하는 클래스가 모여있는 게임 오브젝트
 	[SerializeField]
 	private GameObject			canvas;
 
+	//각종 게임을 관리하는 클래스들
 	private CardRollManager		cardRollManager;
 	private CardSeleter			cardSeleter;
 	private SetChecker			setChecker;
@@ -22,10 +28,13 @@ public class StageManager : MonoBehaviour
 
 	private PrintStageManager	printStageManager;
 
+	//현재 스테이지
 	private int					stage;
+	//마지막 스테이지
 	[SerializeField]
 	private int					lastStage = 10;
 
+	//스테이지 정보를 외부에서 얻을 수 있도록 열어둠
 	public int					Stage { get => stage; }
 
 
@@ -43,14 +52,16 @@ public class StageManager : MonoBehaviour
 		return ;
 	}
 
+	//스테이지를 다음으로 넘김
 	public void	NextStage()
 	{
 		ResetStage();
-		printStageManager.updateText(++stage);
+		printStageManager.updateText(++stage, stage == lastStage);
 		Debug.Log("Now Stage : " + stage);
 		return ;
 	}
 
+	//스테이지를 초기화함
 	private void	ResetStage()
 	{
 		timeManager.ResetTime();
@@ -62,6 +73,7 @@ public class StageManager : MonoBehaviour
 		return ;
 	}
 
+	//시간 초과시 호출되는 함수
 	public void	TimeOverEvent()
 	{
 		if (stage < lastStage)

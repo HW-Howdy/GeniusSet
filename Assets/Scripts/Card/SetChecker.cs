@@ -4,20 +4,23 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
+//선택된 카드들이 합인지, 현재 결을 선언할 수 있는지 체크함
 public class SetChecker : MonoBehaviour
 {
+	//현재 카드 배치에서 나올 수 있는 세트의 모음
 	private List<int[]>			setList =  new List<int[]>();
+	//현재 카드 배치에서 플레이어가 찾은 세트의 모음
 	private List<int[]>			foundSetList = new List<int[]>();
 
+	//외부에서 참조할 수 있으니 열어둠
 	public List<int[]>			SetList { get => setList; }
 	public List<int[]>			FoundSetList { get => foundSetList; }
 
-	private CardSeleter			cardSeleter;
+	//플레이어가 찾은 세트 목록을 화면에 출력해주는 클래스
 	private ShowSetListManager	showSetListManager;
 
 	private void Start()
 	{
-		cardSeleter = transform.GetComponent<CardSeleter>();
 		showSetListManager = GameObject.Find("ShowSetListMaster").GetComponent<ShowSetListManager>();
 		return ;
 	}
