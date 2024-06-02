@@ -28,6 +28,7 @@ public class ScoreManager : MonoBehaviour
 		return ;
 	}
 
+	//화면에 표시되는 스코어 업데이트
 	public void	UpdateText()
 	{
 		scoreText.text = score.ToString();
@@ -45,7 +46,7 @@ public class ScoreManager : MonoBehaviour
 	{
 		this.score += score;
 		UpdateText();
-		Debug.Log("now score = " + score);
+		Debug.Log("now score = " + this.score);
 		return ;
 	}
 
