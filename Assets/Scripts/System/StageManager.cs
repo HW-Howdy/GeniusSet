@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -25,6 +26,7 @@ public class StageManager : MonoBehaviour
 	private SetChecker			setChecker;
 	private ShowSetListManager	showSetListManager;
 	private TimeManager			timeManager;
+	private ScoreManager		scoreManager;
 
 	private PrintStageManager	printStageManager;
 
@@ -47,6 +49,7 @@ public class StageManager : MonoBehaviour
 		showSetListManager = showSetListMaster.GetComponent<ShowSetListManager>();
 		printStageManager = canvas.GetComponent<PrintStageManager>();
 		timeManager = transform.GetComponent<TimeManager>();
+		scoreManager = transform.GetComponent<ScoreManager>();
 		stage = 0;
 		NextStage();
 		return ;
@@ -55,9 +58,16 @@ public class StageManager : MonoBehaviour
 	//스테이지를 다음으로 넘김
 	public void	NextStage()
 	{
-		ResetStage();
-		printStageManager.updateText(++stage, stage == lastStage);
-		Debug.Log("Now Stage : " + stage);
+		if (++stage <= lastStage)
+		{
+			ResetStage();
+			printStageManager.updateText(stage, stage == lastStage);
+			Debug.Log("Now Stage : " + stage);
+		}
+		else
+		{
+			//Something gameover event..
+		}
 		return ;
 	}
 
@@ -76,8 +86,41 @@ public class StageManager : MonoBehaviour
 	//시간 초과시 호출되는 함수
 	public void	TimeOverEvent()
 	{
-		if (stage < lastStage)
-			NextStage();
+		StartCoroutine(StageTimeOverEvent());
+		return ;
+	}
+
+	//시간 초과 이벤트
+	IEnumerator	StageTimeOverEvent()
+	{
+		Debug.Log("TIMEOVER!");
+		scoreManager.addScore(scoreManager.TIMEOVER_PENALTY);
+		cardSeleter.enabled = false;
+		yield return (new WaitForSeconds(3.0f));
+		cardSeleter.enabled = true;
+		NextStage();
+		yield break ;
+	}
+
+	//결을 성공했을 떄의 이벤트
+	IEnumerator	ShortageSuccessEvent()
+	{
+		yield break ;
+	}
+
+	//결을 잘못 선언했을 때의 이벤트
+	IEnumerator	ShortageFailEvent()
+	{
+		yield break ;
+	}
+
+	//필드가 결을 선언할 수 있는지 없는지 확인하고, 알맞은 행동을 취함
+	public void	IsShortage()
+	{
+		if (setChecker.ShortageCheck())
+			StartCoroutine(ShortageSuccessEvent());
+		else
+			StartCoroutine(ShortageFailEvent());
 		return ;
 	}
 }

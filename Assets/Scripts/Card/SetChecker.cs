@@ -18,14 +18,16 @@ public class SetChecker : MonoBehaviour
 
 	//플레이어가 찾은 세트 목록을 화면에 출력해주는 클래스
 	private ShowSetListManager	showSetListManager;
+	private ScoreManager		scoreManager;
 
 	private void Start()
 	{
 		showSetListManager = GameObject.Find("ShowSetListMaster").GetComponent<ShowSetListManager>();
+		scoreManager = GameObject.Find("StageMaster").GetComponent<ScoreManager>();
 		return ;
 	}
 
-	//파라미터로 들어온 cards가 세트인지 확인하고 세트라면 setList에 추가함
+	//파라미터로 들어온 cards가 세트인지 확인하고 세트라면 setList에 추가함. 점수 가감도 함께 함
 	public bool	SetCheck(List<Card> cards)
 	{
 		bool	result = false;
@@ -38,10 +40,13 @@ public class SetChecker : MonoBehaviour
 				result = true;
 				setList.Add(found);
 				showSetListManager.addShowSetList(found);
+				scoreManager.addScore(scoreManager.CHECK_SUCCESS);
 				Debug.Log("new set found! : " + string.Join(", ", setList[setList.Count - 1]));
 				Debug.Log("now setList Count : " + setList.Count);
 			}
 		}
+		if (!result)
+			scoreManager.addScore(scoreManager.CHECK_FAIL);
 		return (result);
 	}
 

@@ -27,8 +27,6 @@ public class TimeManager : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		time = timePerStage;
-		StartCoroutine(CountDown());
 		TimeOverEvent += GameObject.Find("StageMaster").GetComponent<StageManager>().TimeOverEvent;
 		return ;
 	}
