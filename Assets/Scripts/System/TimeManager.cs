@@ -12,7 +12,7 @@ public class TimeManager : MonoBehaviour
 	private int							time = 0;
 	//스테이지 당 시간
 	[SerializeField]
-	private int							timePerStage = 60;
+	private int							timePerStage = 90;
 	//남은 시간을 표시할 Text
 	[SerializeField]
 	private Text						timeText;
@@ -23,6 +23,7 @@ public class TimeManager : MonoBehaviour
 
 	//Time 정보를 외부에서 얻을 수 있도록 열어둠
 	public int							getTime { get => time; }
+	public int							setTimePerStage { set => timePerStage = value; }
 
 	// Start is called before the first frame update
 	void Start()

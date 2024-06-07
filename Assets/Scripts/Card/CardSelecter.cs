@@ -11,14 +11,17 @@ using UnityEngine.UIElements;
 public class CardSeleter : MonoBehaviour
 {
 	//선택된 Card 오브젝트의 Card 컴포넌트 리스트
-	private List<Card>	seletedCards = new List<Card>();
+	private List<Card>				seletedCards = new List<Card>();
 
 	//선택된 Card의 연산을 해줄 클래스
-	private SetChecker	setChecker;
+	private SetChecker				setChecker;
+	//합의 결과를 출력해주는 클래스
+	private PrintEventPanelManager	printEventPanelManager;
 
 	private void Start()
 	{
 		setChecker = transform.GetComponent<SetChecker>();
+		printEventPanelManager = GameObject.Find("CanvasUI").GetComponent<PrintEventPanelManager>();
 		return ;
 	}
 
@@ -59,7 +62,7 @@ public class CardSeleter : MonoBehaviour
 		Debug.Log("Now seleted : " + string.Join(", ", seletedCards));
 		if (seletedCards.Count == 3)
 		{
-			setChecker.SetCheck(seletedCards);
+			printEventPanelManager.showCheckPanel( setChecker.SetCheck(seletedCards) );
 			for (int i = 0; i < seletedCards.Count; i++)
 				seletedCards[i].OnClick(false);
 			ResetSelete();
