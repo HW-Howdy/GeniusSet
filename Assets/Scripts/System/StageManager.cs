@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -78,7 +79,8 @@ public class StageManager : MonoBehaviour
 		}
 		else
 		{
-			//Something gameover event..
+			PlayerPrefs.SetInt("score", scoreManager.getScore() );
+			SceneManager.LoadScene("ResultScene");
 		}
 		return ;
 	}

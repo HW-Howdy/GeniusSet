@@ -19,7 +19,7 @@ public class PrintBackgroundManager : MonoBehaviour
 	private List<int>	bgList = new List<int>();
 	private int			now;
 
-	void	Start()
+	void	Awake()
 	{
 		image = background.GetComponent<Image>();
 		for (int i = 0; i < sprites.Length; i++)
