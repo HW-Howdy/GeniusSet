@@ -21,6 +21,12 @@ public class PrintResultManager : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		ShowScore();
+		return ;
+	}
+
+	void ShowScore()
+	{
 		nowScore = PlayerPrefs.GetInt("score");
 		highScore = PlayerPrefs.GetInt("highScore");
 		if (nowScore > highScore)
@@ -31,6 +37,13 @@ public class PrintResultManager : MonoBehaviour
 		}
 		nowScoreText.GetComponent<Text>().text = nowScore.ToString();
 		highScoreText.GetComponent<Text>().text = highScore.ToString();
+	}
+
+	public void ResetScoreButton()
+	{
+		PlayerPrefs.SetInt("score", 0);
+		PlayerPrefs.SetInt("highScore", 0);
+		ShowScore();
 		return ;
 	}
 }
