@@ -5,7 +5,7 @@ using UnityEngine;
 //화면 UI의 해상도를 조절하는 클래스
 public class FixedRect : MonoBehaviour
 {
-	private void Update()
+	private void Start()
 	{
 		SetResolution();
 	}
