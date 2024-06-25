@@ -2812,7 +2812,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBD80\uD569\n"
+  m_Text: "\uBD88\uD569\n"
 --- !u!222 &1722818700
 CanvasRenderer:
   m_ObjectHideFlags: 0

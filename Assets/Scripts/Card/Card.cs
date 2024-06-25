@@ -31,16 +31,16 @@ public class Card : MonoBehaviour
 	private Vector3[]	positions;
 
 	//카드의 유형. 유형에 따라 위의 정보에 따라 자식 오브젝트를 수정함
-    private int			headType;
-    private int			headColor;
+	private int			headType;
+	private int			headColor;
 	private int			bodyColor;
 	//카드가 플레이어에 의해 선택되었는지 여부
 	private bool		state;
 
 	//카드의 유형을 외부에서 접근 가능하도록 하였음
 	public int			HeadType { get => headType; set => headType = value; }
-    public int			HeadColor { get => headColor; set => headColor = value; }
-    public int			BodyColor { get => bodyColor; set => bodyColor = value; }
+	public int			HeadColor { get => headColor; set => headColor = value; }
+	public int			BodyColor { get => bodyColor; set => bodyColor = value; }
 
 	// Start is called before the first frame update
 	private void	Start()

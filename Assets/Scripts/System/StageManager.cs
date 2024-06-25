@@ -137,6 +137,7 @@ public class StageManager : MonoBehaviour
 		Debug.Log("SHORTAGE S");
 		scoreManager.addScore(scoreManager.SHORTAGE_SUCCESS);
 		cardSeleter.enabled = false;
+		timeManager.TimeStop();
 		shortageButton.interactable = false;
 		yield return (new WaitForSeconds(2.5f));
 		cardSeleter.enabled = true;

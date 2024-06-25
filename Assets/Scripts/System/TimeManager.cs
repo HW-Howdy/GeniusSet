@@ -57,6 +57,13 @@ public class TimeManager : MonoBehaviour
 		return ;
 	}
 
+	//흐르는 시간을 정지시킴
+	public void	TimeStop()
+	{
+		StopAllCoroutines();
+		return ;
+	}
+
 	//1초마다 time을 1 감소시킴
 	IEnumerator	CountDown()
 	{
